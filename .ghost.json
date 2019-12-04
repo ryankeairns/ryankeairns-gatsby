@@ -1,10 +1,10 @@
 {
   "development": {
-    "apiUrl": "http://blog.ryankeairns.com",
+    "apiUrl": "https://blog.ryankeairns.com",
     "contentApiKey": "9ba8aa49a2d69929911999fcc3"
   },
   "production": {
-    "apiUrl": "http://blog.ryankeairns.com",
+    "apiUrl": "https://blog.ryankeairns.com",
     "contentApiKey": "9ba8aa49a2d69929911999fcc3"
   }
 }
