@@ -18,7 +18,7 @@ import '../../styles/app.css'
 * styles, and meta data for each page.
 *
 */
-const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
+const DefaultLayout = ({ data, children, bodyClass }) => {
     const site = data.allGhostSettings.edges[0].node
     const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}` : null
 
@@ -38,29 +38,28 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <header className="site-head">
                     <div className="container">
                         <div className="site-mast">
-                            <Link to="/">
-                                {site.logo ?
-                                    <img className="site-logo" src={site.logo} alt={site.title} />
-                                    : <Img fixed={data.file.childImageSharp.fixed} alt={site.title} />
-                                }
-                            </Link>
-                            { isHome ?
-                                <div className="site-banner">
-                                    <h1 className="site-banner-title">{site.title}</h1>
-                                    <p className="site-banner-desc">{site.description}</p>
-                                </div> :
-                            null}
+                            <div className="site-mast-left">
+                                <Link to="/">
+                                    {site.logo ?
+                                        <img className="site-logo" src={site.logo} alt={site.title} />
+                                        : <Img fixed={data.file.childImageSharp.fixed} alt={site.title} />
+                                    }
+                                </Link>
+                                <h1 className="site-banner-title">{site.title}</h1>
+                            </div>
+                            <p className="site-banner-desc">{site.description}</p>
                         </div>
-                        <nav className="site-nav">
-                            {/* The navigation items as setup in Ghost */}
-                            <Navigation data={site.navigation} navClass="site-nav-item" />
-                            { site.twitter && <a href={ twitterUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer">Twitter</a>}
-                            <a className="site-nav-item" href={ `https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/` } target="_blank" rel="noopener noreferrer">RSS</a>
-                            <Link className="site-nav-item" to="/about">About</Link>
-                        </nav>
                     </div>
                 </header>
-
+                <div className="container">
+                    <nav className="site-nav">
+                        {/* The navigation items as setup in Ghost */}
+                        <Navigation data={site.navigation} navClass="site-nav-item" />
+                        <Link className="site-nav-item" to="/about">About</Link>
+                        { site.twitter && <a href={ twitterUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer">Twitter</a>}
+                        <a className="site-nav-item" href={ `https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/` } target="_blank" rel="noopener noreferrer">RSS</a>
+                    </nav>
+                </div>
                 <main className="site-main">
                     {/* All the main content gets inserted here, index.js, post.js */}
                     {children}
@@ -77,9 +76,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         </div>
                         <div className="site-foot-nav-right">
                             <Navigation data={site.navigation} navClass="site-foot-nav-item" />
+                            <Link className="site-foot-nav-item" to="/about">About</Link>
                             { site.twitter && <a href={ twitterUrl } className="site-foot-nav-item" target="_blank" rel="noopener noreferrer">Twitter</a>}
                             <a className="site-foot-nav-item" href={ `https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/` } target="_blank" rel="noopener noreferrer">RSS</a>
-                            <Link className="site-foot-nav-item" to="/about">About</Link>
                         </div>
                     </div>
                 </footer>
@@ -94,7 +93,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
 DefaultLayout.propTypes = {
     children: PropTypes.node.isRequired,
     bodyClass: PropTypes.string,
-    isHome: PropTypes.bool,
     data: PropTypes.shape({
         file: PropTypes.object,
         allGhostSettings: PropTypes.object.isRequired,
@@ -112,7 +110,7 @@ const DefaultLayoutSettingsQuery = props => (
                         }
                     }
                 }
-                file(relativePath: {eq: "ghost-icon.png"}) {
+                file(relativePath: {eq: "rk-icon.png"}) {
                     childImageSharp {
                         fixed(width: 30, height: 30) {
                             ...GatsbyImageSharpFixed
