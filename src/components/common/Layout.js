@@ -55,7 +55,6 @@ const DefaultLayout = ({ data, children, bodyClass }) => {
                     <nav className="site-nav">
                         {/* The navigation items as setup in Ghost */}
                         <Navigation data={site.navigation} navClass="site-nav-item" />
-                        <Link className="site-nav-item" to="/about">About</Link>
                         { site.twitter && <a href={ twitterUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer">Twitter</a>}
                         <a className="site-nav-item" href={ `https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/` } target="_blank" rel="noopener noreferrer">RSS</a>
                     </nav>
@@ -76,7 +75,6 @@ const DefaultLayout = ({ data, children, bodyClass }) => {
                         </div>
                         <div className="site-foot-nav-right">
                             <Navigation data={site.navigation} navClass="site-foot-nav-item" />
-                            <Link className="site-foot-nav-item" to="/about">About</Link>
                             { site.twitter && <a href={ twitterUrl } className="site-foot-nav-item" target="_blank" rel="noopener noreferrer">Twitter</a>}
                             <a className="site-foot-nav-item" href={ `https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/` } target="_blank" rel="noopener noreferrer">RSS</a>
                         </div>
