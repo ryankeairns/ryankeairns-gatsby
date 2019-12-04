@@ -518,9 +518,9 @@ h6 {
 }
 
 .container {
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
-    padding: 0 4vw;
+    padding: 0 var(--margin);
 }
 
 .content {
@@ -534,7 +534,7 @@ h6 {
 }
 
 .post-full-content {
-    max-width: 720px;
+    max-width: 760px;
     margin: 0 auto;
     background: #fff;
 }
@@ -746,6 +746,10 @@ h6 {
 
 .site-main {
     padding: calc(var(--spacer-medium) * 2) 0;
+}
+
+.site-main .container {
+    max-width: 760px;
 }
 
 /* Index
