@@ -115,6 +115,7 @@ const generateRSSFeed = function generateRSSFeed(siteConfig) {
         }
   `,
         output: `/rss`,
+        title: `ryankeairns.com RSS Feed`,
     }
 }
 
