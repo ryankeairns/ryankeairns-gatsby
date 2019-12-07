@@ -18,7 +18,7 @@ import '../../styles/app.css'
 * styles, and meta data for each page.
 *
 */
-const DefaultLayout = ({ data, children, bodyClass }) => {
+const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
     const site = data.allGhostSettings.edges[0].node
     const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}` : null
 
@@ -45,20 +45,34 @@ const DefaultLayout = ({ data, children, bodyClass }) => {
                                         : <Img fixed={data.file.childImageSharp.fixed} alt={site.title} />
                                     }
                                 </Link>
-                                <h1 className="site-banner-title">{site.title}</h1>
+                                <h1 className="screenreader-only">{site.title}</h1>
+                                <p className="screenreader-only">{site.description}</p>
                             </div>
-                            <p className="site-banner-desc">{site.description}</p>
+                            <div className="site-mast-right">
+                                <nav className="site-nav">
+                                    {/* The navigation items as setup in Ghost */}
+                                    <Navigation data={site.navigation} navClass="site-nav-item" />
+                                    { site.twitter && <a href={ twitterUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer">Twitter</a>}
+                                    <a className="site-nav-item" href={ `https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/` } target="_blank" rel="noopener noreferrer">RSS</a>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </header>
                 <div className="container">
-                    <nav className="site-nav">
-                        {/* The navigation items as setup in Ghost */}
-                        <Navigation data={site.navigation} navClass="site-nav-item" />
-                        { site.twitter && <a href={ twitterUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer">Twitter</a>}
-                        <a className="site-nav-item" href={ `https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/` } target="_blank" rel="noopener noreferrer">RSS</a>
-                    </nav>
+                    
                 </div>
+                { isHome ?
+                    <div className="site-banner">
+                        <div className="container">
+                            <h2 className="site-banner-title">Hello, I'm Ryan Keairns.</h2>
+                            <div className="site-banner-desc">
+                                <p>I design and build stuff for people to stare at, or listen to, in their web browser. Hopefully, they'll click around and get their job done without getting angry.</p>
+                                <p><Link to="/about">Learn more boring stuff about me &rarr;</Link></p>
+                            </div>
+                        </div>
+                    </div> :	
+                    null}
                 <main className="site-main">
                     {/* All the main content gets inserted here, index.js, post.js */}
                     {children}
