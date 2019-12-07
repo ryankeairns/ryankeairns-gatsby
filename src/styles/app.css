@@ -57,6 +57,11 @@ what's here to work the way you'd like it to.
     /* Layout */
     --body-width: 900px;
 
+    /* Animation */
+    --anim-speed-fast: 100ms;
+    --anim-speed-normal: 200ms;
+    --anim-speed-slow: 350ms;
+
 }
 
 
@@ -455,11 +460,14 @@ blockquote cite a {
 a {
     color: var(--color-accent);
     text-decoration: none;
+    opacity: 1;
+    transition: opcaity var(--anim-speed-fast);
 }
 
 a:hover {
     text-decoration: underline;
-    color: var(--color-secondary);
+    opacity: .8;
+    transition: opcaity var(--anim-speed-normal);
 }
 
 h1,
@@ -635,33 +643,44 @@ h6 {
     background-size: cover;
 }
 
+@media (max-width: 500px) {
+    .site-head {
+        padding: var(--spacer-medium);
+    }
+}
+
 .site-nav-item,
 .site-foot-nav-right a {
     font-family: var(--font-sans-serif);
     font-weight: var(--font-bold);
-    padding: calc(var(--spacer-xsmall) / 2) var(--spacer-xsmall);
     margin: 0 0 0 var(--spacer-medium);
     border-bottom: 2px solid transparent;
-    transition: background-color 350ms;
     letter-spacing: 1px;
 }
 
 .site-nav-item {
-    padding: var(--spacer-small) calc(var(--spacer-small) * 1.5);
+    padding: var(--spacer-medium) calc(var(--spacer-small) * 1.5);
     color: var(--color-bg);
+    background-color: transparent;
+    transition: background-color var(--anim-speed-fast);
 }
 
 .site-nav-item:hover {
  background-color: rgba(255,255,255, 0.1);
  text-decoration: none  ;
  color: #FFF;
+ transition: background-color var(--anim-speed-normal);
+}
+
+.site-foot-nav-right a {
+    padding: var(--spacer-xsmall) var(--spacer-small);
 }
 
 .site-foot-nav-right a:hover {
     color: var(--color-accent);
     text-decoration: none;
     border-bottom: 2px solid currentColor;
-    transition: border-bottom 200ms;
+    transition: border-bottom var(--anim-speed-normal);
 }
 
 .site-nav-icon {
@@ -672,6 +691,7 @@ h6 {
 @media (max-width: 500px) {
     .site-nav-item {
         margin-left: 0;
+        padding: var(--spacer-small);
     }
 }
 
@@ -704,22 +724,30 @@ h6 {
     justify-content: space-around;
     padding-bottom: var(--margin);
     padding-top: var(--margin);
-    background-color: gainsboro;
+    background-color: #EFEFEF;
 }
 
 .site-banner .container {
     width: var(--body-width);
 }
 
-.site-banner-title {
-    margin: 0;
-    margin-right: var(--margin);
+.site-banner-title,
+.site-banner-subtitle {
+    margin: 0 0 var(--spacer-small);
     padding: 0;
     color: var(--color-secondary);
     font-family: var(--font-sans-serif);
+}
+
+.site-banner-title {
     font-size: calc(var(--font-size-base) * 2);
     font-weight: var(--font-heavy);
-    line-height: calc(var(--font-size-base) * 4);
+    line-height: calc(var(--font-size-base) * 2.5);
+}
+
+.site-banner-subtitle {
+    margin: 0 0 var(--spacer-large);
+    opacity: 0.6;
 }
 
 .site-banner-desc {
@@ -739,9 +767,7 @@ h6 {
         margin-right: 0;
     }
     .site-banner-desc {
-        text-align: center;
         font-size: var(--font-size-base);
-        max-width: 200px;
     }
 }
 
@@ -773,6 +799,8 @@ h6 {
 
 @media (max-width: 750px) {
     .site-nav {
+        flex-direction: column;
+        margin-top: var(--spacer-large);
         justify-content: space-between;
     }
 }
@@ -814,12 +842,12 @@ h6 {
     padding-bottom: var(--margin);
     margin-bottom: calc(var(--margin) * 1.5);
     border-bottom: 1px solid var(--color-border);
-    transition: margin-left 100ms;
+    transition: margin-left var(--anim-speed-fast);
 }
 
 .post-card:hover {
     margin-left: var(--spacer-xsmall);
-    transition: margin-left 200ms;
+    transition: margin-left var(--anim-speed-normal);
 }
 
 .post-card:hover {
@@ -1028,8 +1056,9 @@ a:hover .post-card-title {
 /* ---------------------------------------------------------- */
 
 .site-foot {
-    padding: var(--spacer-large) 0 var(--spacer-xlarge) 0;
+    padding: var(--spacer-large) 0;
     font-size: var(--font-size-base);
+    border-top: 1px solid var(--color-border);
 }
 
 .site-foot-nav {
@@ -1038,13 +1067,27 @@ a:hover .post-card-title {
     justify-content: space-between;
 }
 
+.site-foot-nav-right {
+    display: flex;
+}
+
 @media (max-width: 500px) {
     .site-foot-nav {
         flex-direction: column-reverse;
     }
+
     .site-foot-nav-left {
         margin-top: calc(var(--margin) * .5);
         text-align: center;
+    }
+    .site-foot-nav-right {
+        flex-direction: column;
+        margin-bottom: var(--spacer-medium);
+        text-align: center;
+    }
+    .site-foot-nav-right a {
+        padding: var(--spacer-small);
+        margin-left: 0;
     }
 }
 

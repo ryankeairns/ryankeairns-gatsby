@@ -65,9 +65,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 { isHome ?
                     <div className="site-banner">
                         <div className="container">
-                            <h2 className="site-banner-title">Hello, I'm Ryan Keairns.</h2>
+                            <h2 className="site-banner-title">Ryan Keairns</h2>
+                            <h3 className="site-banner-subtitle">The World's Oldest Product Designer&trade;</h3>
                             <div className="site-banner-desc">
-                                <p>I design and build stuff for people to stare at, or listen to, in their web browser. Hopefully, they'll click around and get their job done without getting angry.</p>
+                                <p>I design and build stuff for people to stare at, or listen to, in their web browser. If things go well, they'll navigate around and get their job done without uttering the phrase "Who designed this!?"</p>
                                 <p><Link to="/about">Learn more boring stuff about me &rarr;</Link></p>
                             </div>
                         </div>
