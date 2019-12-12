@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 
 import { Layout } from '../components/common'
@@ -28,6 +28,7 @@ const Post = ({ data, location }) => {
                 <Layout>
                     <div className="container">
                         <article className="content">
+                            <p><Link to="/">&larr; Home</Link></p>
                             { post.feature_image ?
                                 <figure className="post-feature-image">
                                     <img src={ post.feature_image } alt={ post.title } />

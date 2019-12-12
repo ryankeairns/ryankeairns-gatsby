@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Layout } from '../components/common'
+import { Link } from 'gatsby'
 
 /**
 * About page
@@ -14,6 +15,7 @@ const AboutPage = () => {
         <>
             <Layout>
                 <div className="container">
+                    <p><Link to="/">&larr; Home</Link></p>
                     <article className="content">
                         <h1 className="content-title">I'm a designer and builder of web things, currently working at <a href="https://www.elastic.co/" target="_blank" rel="noopener noreferrer">Elastic</a>.</h1>
 
