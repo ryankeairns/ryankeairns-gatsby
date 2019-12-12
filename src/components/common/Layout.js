@@ -66,10 +66,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <div className="site-banner">
                         <div className="container">
                             <h2 className="site-banner-title">Ryan Keairns</h2>
-                            <h3 className="site-banner-subtitle">The World's Oldest Product Designer&trade;</h3>
+                            <h3 className="site-banner-subtitle">Midwestern Product Designer</h3>
                             <div className="site-banner-desc">
-                                <p>I design and build stuff for people to stare at, or listen to, in their web browser. If things go well, they'll navigate around and get their job done without uttering the phrase "Who designed this!?"</p>
-                                <p><Link to="/about">Learn more boring stuff about me &rarr;</Link></p>
+                                <p>I design and build stuff for people to stare at, or listen to, in their web browser. If things go well, they'll navigate around and get their job done without getting angry at me.</p>
+                                <p><Link to="/about">Learn more boring stuff about Ryan &rarr;</Link></p>
                             </div>
                         </div>
                     </div> :	
@@ -86,7 +86,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <footer className="site-foot">
                     <div className="site-foot-nav container">
                         <div className="site-foot-nav-left">
-                            <Link to="/">{site.title}</Link> © 2019 &mdash; Published with <a className="site-foot-nav-item" href="https://ghost.org" target="_blank" rel="noopener noreferrer">Ghost</a>
+                            <Link to="/">{site.title}</Link> © 2019 and beyond&#8230;
                         </div>
                         <div className="site-foot-nav-right">
                             <Navigation data={site.navigation} navClass="site-foot-nav-item" />
